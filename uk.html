@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time in the UK - MyGlobalTime</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Hides all page scrollbars */
+        html, body {
+            overflow: hidden;
+        }
+        /* Custom scrollbar styles for the blog section */
+        .blog-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .blog-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .blog-container::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 4px;
+        }
+        /* Style for disabled scroll arrows */
+        .scroll-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white antialiased">
+
+    <nav x-data="{ mobileMenuOpen: false }" class="bg-gray-800 shadow-md relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <div>
+                    <a href="https://www.myglobaltime.com/" target="_top" class="font-headline text-2xl text-white">MyGlobalTime</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://www.myglobaltime.com/" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="https://www.myglobaltime.com/timeconverter" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Time Converter</a>
+                    
+                    <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+                        <button @mouseover="open = true" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                            <span>Time Zone</span>
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div @mouseover="open = true" x-show="open" x-transition="" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-700 ring-1 ring-gray-600 z-10" style="display: none;">
+                            <a href="https://www.myglobaltime.com/what-is-ist" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">IST</a>
+                            <a href="https://www.myglobaltime.com/what-is-est" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">EST</a>
+                            <a href="https://www.myglobaltime.com/what-is-pst" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">PST</a>
+                        </div>
+                    </div>
+                    
+                    <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+                        <button @mouseover="open = true" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                            <span>Country</span>
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div @mouseover="open = true" x-show="open" x-transition="" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-700 ring-1 ring-gray-600 z-10" style="display: none;">
+                            <a href="https://www.myglobaltime.com/australia" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Australia</a>
+                            <a href="https://www.myglobaltime.com/canada" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Canada</a>
+                            <a href="https://www.myglobaltime.com/france" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">France</a>
+                            <a href="https://www.myglobaltime.com/russia" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Russia</a>
+                            <a href="https://www.myglobaltime.com/uk" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">UK</a>
+                            <a href="https://www.myglobaltime.com/usa" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">USA</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg x-show="!mobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        <svg x-show="mobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden absolute top-16 left-0 w-full bg-gray-800 shadow-lg" style="display: none;">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="https://www.myglobaltime.com/" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="https://www.myglobaltime.com/timeconverter" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Time Converter</a>
+                <a href="#" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium border-t border-gray-700 mt-2 pt-3">Blog</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto px-4 py-8 md:py-16">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+                Current Time in the UK
+            </h1>
+            <p class="mt-2 text-lg text-gray-400">The UK and its overseas territories are spread across 9 time zones.</p>
+        </header>
+
+        <main class="max-w-5xl mx-auto">
+             <!-- Timezone sections will be injected here by JavaScript -->
+        </main>
+        
+        <!-- Blog Section Added Here -->
+        <section class="py-16 mt-16 bg-gray-800/20 rounded-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">From Our Blog</h2>
+                
+                <div class="relative">
+                    <button id="scroll-left-btn" class="scroll-btn absolute top-1/2 left-0 md:-left-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    
+                    <div id="blog-slider-wrapper" class="blog-container grid grid-flow-col auto-cols-[90%] sm:auto-cols-[45%] lg:auto-cols-[31%] gap-6 overflow-x-auto pb-4" style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;">
+                        </div>
+
+                    <button id="scroll-right-btn" class="scroll-btn absolute top-1/2 right-0 md:-right-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // --- DATA ---
+        const ukTimezones = [ { zoneName: "Greenwich Mean Time (UTC+0/DST)", cities: [{ name: "London", timezone: "Europe/London" }] }, { zoneName: "Central European Time (UTC+1/DST)", cities: [{ name: "Gibraltar", timezone: "Europe/Gibraltar" }] }, { zoneName: "Atlantic Time (UTC-4/DST)", cities: [{ name: "Bermuda", timezone: "Atlantic/Bermuda" }] }, { zoneName: "Falkland Islands Time (UTC-3)", cities: [{ name: "Stanley", timezone: "Atlantic/Stanley" }] }, { zoneName: "Eastern Standard Time (UTC-5)", cities: [{ name: "Cayman Islands", timezone: "America/Cayman" }] }, { zoneName: "Turks & Caicos Time (UTC-5/DST)", cities: [{ name: "Grand Turk", timezone: "America/Grand_Turk" }] }, { zoneName: "Indian Ocean Time (UTC+6)", cities: [{ name: "Chagos Archipelago", timezone: "Indian/Chagos" }] }, { zoneName: "Pitcairn Standard Time (UTC-8)", cities: [{ name: "Pitcairn Islands", timezone: "Pacific/Pitcairn" }] }, { zoneName: "South Georgia Time (UTC-2)", cities: [{ name: "South Georgia", timezone: "Atlantic/South_Georgia" }] } ];
+        const blogPosts = [ { title: "Daylight Saving Time Explained", description: "Explore the surprising history and heated debates behind the twice-yearly ritual of changing our clocks.", image: "https://static.wixstatic.com/media/31d31f_ec75f5b0dbfa408bb86f301a96cac4dc~mv2.png", link: "https://www.myglobaltime.com/daylight-saving-time-explained" }, { title: "What is UTC? A Simple Guide", description: "Demystify the master clock that keeps the entire planet in sync, from aviation to the internet.", image: "https://static.wixstatic.com/media/31d31f_7c17d25ef1914f058b2bc407cb525b46~mv2.png", link: "https://www.myglobaltime.com/what-is-utc" }, { title: "The International Date Line", description: "Journey to the middle of the Pacific to understand the imaginary line where a new day is born.", image: "https://static.wixstatic.com/media/31d31f_a7a0cf78f82b4693a4af4003457256f6~mv2.png", link: "https://www.myglobaltime.com/international-date-line" }, { title: "Why India Has a Single Time Zone", description: "A look into the history and consequences of India's single time zone and the calls for change.", image: "https://static.wixstatic.com/media/31d31f_030e268abdb4428a8ee4f2f62363c90a~mv2.png", link: "https://www.myglobaltime.com/india-single-time-zone" } ];
+
+        // --- ELEMENTS ---
+        const mainContent = document.querySelector('main');
+        const blogSliderWrapper = document.getElementById('blog-slider-wrapper');
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            createTimeZoneSections();
+            updateClocks();
+            setInterval(updateClocks, 1000);
+
+            // Populate the blog section and set up scrolling
+            populateBlogSection();
+            setupBlogScrolling();
+        });
+
+        // --- FUNCTIONS ---
+        function createTimeZoneSections() {
+            ukTimezones.forEach(zone => {
+                const zoneContainer = document.createElement('div');
+                zoneContainer.className = 'mb-10';
+
+                const zoneHeading = document.createElement('h2');
+                zoneHeading.className = 'text-2xl font-bold mb-4 border-b border-gray-700 pb-2';
+                zoneHeading.textContent = zone.zoneName;
+                zoneContainer.appendChild(zoneHeading);
+
+                const clocksGrid = document.createElement('div');
+                clocksGrid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6';
+                zoneContainer.appendChild(clocksGrid);
+
+                zone.cities.forEach(city => {
+                    const card = createClockCard(city.name, city.timezone);
+                    clocksGrid.appendChild(card);
+                });
+
+                mainContent.appendChild(zoneContainer);
+            });
+        }
+
+        function createClockCard(cityName, timezone) {
+            const card = document.createElement('div');
+            card.dataset.timezone = timezone;
+            card.className = 'clock-card bg-gray-800 rounded-lg p-5 text-center transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 hover:scale-105';
+            
+            card.innerHTML = `
+                <h3 class="text-2xl font-bold text-left">${cityName}</h3>
+                <div class="time-display text-5xl font-semibold my-3 tracking-tighter">--:--:--</div>
+                <div class="date-display text-sm text-gray-400">---, --- --</div>
+            `;
+            
+            return card;
+        }
+
+        function updateClocks() {
+            const now = new Date();
+            document.querySelectorAll('.clock-card').forEach(card => {
+                const timezone = card.dataset.timezone;
+                if (!timezone) return;
+
+                const timeOptions = { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZoneName: 'short' };
+                const dateOptions = { timeZone: timezone, weekday: 'short', month: 'short', day: 'numeric' };
+
+                try {
+                    const timeString = new Intl.DateTimeFormat('en-US', timeOptions).format(now);
+                    const dateString = new Intl.DateTimeFormat('en-US', dateOptions).format(now);
+                    card.querySelector('.time-display').textContent = timeString;
+                    card.querySelector('.date-display').textContent = dateString;
+                } catch (error) {
+                    console.error(`Error formatting date for ${timezone}:`, error);
+                    card.querySelector('.time-display').textContent = 'Error';
+                }
+            });
+        }
+
+        // --- BLOG FUNCTIONS ---
+        function populateBlogSection() {
+            blogPosts.forEach(post => {
+                const slide = document.createElement('div');
+                slide.className = 'scroll-snap-align-start';
+                slide.innerHTML = ` <a href="${post.link}" target="_top" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-indigo-500/30 transition-shadow duration-300 h-full flex flex-col"> <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover"> <div class="p-4 flex-grow"> <h3 class="font-headline text-lg font-bold mb-2">${post.title}</h3> <p class="text-gray-400 text-sm">${post.description}</p> </div> </a> `;
+                blogSliderWrapper.appendChild(slide);
+            });
+        }
+
+        function setupBlogScrolling() {
+            const container = document.getElementById('blog-slider-wrapper');
+            const leftBtn = document.getElementById('scroll-left-btn');
+            const rightBtn = document.getElementById('scroll-right-btn');
+
+            if (!container || !leftBtn || !rightBtn) return;
+
+            const updateArrowStates = () => {
+                leftBtn.disabled = container.scrollLeft <= 0;
+                const maxScrollLeft = container.scrollWidth - container.clientWidth;
+                rightBtn.disabled = container.scrollLeft >= maxScrollLeft - 1;
+            };
+
+            rightBtn.addEventListener('click', () => {
+                const scrollAmount = container.clientWidth * 0.9;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            leftBtn.addEventListener('click', () => {
+                const scrollAmount = container.clientWidth * 0.9;
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+            
+            container.addEventListener('scroll', updateArrowStates);
+            new ResizeObserver(updateArrowStates).observe(container);
+            updateArrowStates();
+        }
+    </script>
+</body>
+</html>

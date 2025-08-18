@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Zone Converter - MyGlobalTime</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Playfair Display', serif;
+        }
+        .glow {
+            box-shadow: 0 0 10px rgba(79, 70, 229, 0.5), 0 0 20px rgba(79, 70, 229, 0.3);
+        }
+        select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding-right: 2.5rem;
+        }
+        /* Hides all page scrollbars */
+        html, body {
+            overflow: hidden;
+        }
+        /* Custom scrollbar styles for the blog section */
+        .blog-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .blog-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .blog-container::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 4px;
+        }
+        /* Style for disabled scroll arrows */
+        .scroll-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white antialiased">
+
+    <nav x-data="{ mobileMenuOpen: false }" class="bg-gray-800 shadow-md relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <div>
+                    <a href="https://www.myglobaltime.com/" target="_top" class="font-headline text-2xl text-white">MyGlobalTime</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://www.myglobaltime.com/" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="https://www.myglobaltime.com/timeconverter" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Time Converter</a>
+                    
+                    <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+                        <button @mouseover="open = true" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                            <span>Time Zone</span>
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div @mouseover="open = true" x-show="open" x-transition="" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-700 ring-1 ring-gray-600 z-10" style="display: none;">
+                            <a href="https://www.myglobaltime.com/what-is-ist" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">IST</a>
+                            <a href="https://www.myglobaltime.com/what-is-est" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">EST</a>
+                            <a href="https://www.myglobaltime.com/what-is-pst" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">PST</a>
+                        </div>
+                    </div>
+                    
+                    <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+                        <button @mouseover="open = true" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                            <span>Country</span>
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div @mouseover="open = true" x-show="open" x-transition="" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-700 ring-1 ring-gray-600 z-10" style="display: none;">
+                            <a href="https://www.myglobaltime.com/australia" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Australia</a>
+                            <a href="https://www.myglobaltime.com/canada" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Canada</a>
+                            <a href="https://www.myglobaltime.com/france" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">France</a>
+                            <a href="https://www.myglobaltime.com/russia" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Russia</a>
+                            <a href="https://www.myglobaltime.com/uk" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">UK</a>
+                            <a href="https://www.myglobaltime.com/usa" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">USA</a>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.myglobaltime.com/blogs" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg x-show="!mobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        <svg x-show="mobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden absolute top-16 left-0 w-full bg-gray-800 shadow-lg" style="display: none;">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="https://www.myglobaltime.com/" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="https://www.myglobaltime.com/timeconverter" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Time Converter</a>
+                <a href="https://www.myglobaltime.com/blogs" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium border-t border-gray-700 mt-2 pt-3">Blog</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mx-auto px-4 py-8 md:py-16">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+                Time Converter
+            </h1>
+            <p class="mt-2 text-lg text-gray-400">Convert times between cities instantly.</p>
+        </header>
+
+        <main>
+            <div id="converter-card" class="max-w-4xl mx-auto bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 md:p-8 glow mb-16">
+                
+                <div class="grid grid-cols-1 md:grid-cols-11 gap-6 items-center">
+                    
+                    <div class="md:col-span-5">
+                        <h2 class="text-xl font-bold mb-3 text-indigo-300">From</h2>
+                        <div class="space-y-4">
+                            <select id="from-city" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"></select>
+                            <input type="time" id="from-time-input" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <div id="from-date-display" class="text-gray-400 text-center h-6"></div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-1 text-center">
+                        <button id="swap-btn" class="p-3 bg-gray-700 hover:bg-indigo-600 rounded-full transition-all duration-300 transform md:rotate-0 rotate-90">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="md:col-span-5">
+                        <h2 class="text-xl font-bold mb-3 text-purple-300">To</h2>
+                        <div class="space-y-4">
+                            <select id="to-city" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"></select>
+                            <div id="to-time-display" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-2xl font-bold text-center">--:--</div>
+                            <div id="to-date-display" class="text-gray-400 text-center h-6"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Blog Section Added Here -->
+            <section class="py-16 bg-gray-800/20 rounded-lg">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center mb-12">From Our Blog</h2>
+                    
+                    <div class="relative">
+                        <button id="scroll-left-btn" class="scroll-btn absolute top-1/2 left-0 md:-left-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        
+                        <div id="blog-slider-wrapper" class="blog-container grid grid-flow-col auto-cols-[90%] sm:auto-cols-[45%] lg:auto-cols-[31%] gap-6 overflow-x-auto pb-4" style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;">
+                            </div>
+
+                        <button id="scroll-right-btn" class="scroll-btn absolute top-1/2 right-0 md:-right-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        // --- DATA ---
+        const timezones = { "Mumbai": "Asia/Kolkata", "London": "Europe/London", "Paris": "Europe/Paris", "New York": "America/New_York", "Los Angeles": "America/Los_Angeles", "Tokyo": "Asia/Tokyo", "Sydney": "Australia/Sydney", "Dubai": "Asia/Dubai", "Singapore": "Asia/Singapore", "Moscow": "Europe/Moscow", "Beijing": "Asia/Shanghai", "Rio de Janeiro": "America/Sao_Paulo", "Cairo": "Africa/Cairo", "Chicago": "America/Chicago", "Toronto": "America/Toronto", "Berlin": "Europe/Berlin", "Rome": "Europe/Rome", "Seoul": "Asia/Seoul", "Bangkok": "Asia/Bangkok", "Johannesburg": "Africa/Johannesburg" };
+        const cityNames = Object.keys(timezones);
+        const blogPosts = [ { title: "Daylight Saving Time Explained", description: "Explore the surprising history and heated debates behind the twice-yearly ritual of changing our clocks.", image: "https://static.wixstatic.com/media/31d31f_ec75f5b0dbfa408bb86f301a96cac4dc~mv2.png", link: "https://www.myglobaltime.com/daylight-saving-time-explained" }, { title: "What is UTC? A Simple Guide", description: "Demystify the master clock that keeps the entire planet in sync, from aviation to the internet.", image: "https://static.wixstatic.com/media/31d31f_7c17d25ef1914f058b2bc407cb525b46~mv2.png", link: "https://www.myglobaltime.com/what-is-utc" }, { title: "The International Date Line", description: "Journey to the middle of the Pacific to understand the imaginary line where a new day is born.", image: "https://static.wixstatic.com/media/31d31f_a7a0cf78f82b4693a4af4003457256f6~mv2.png", link: "https://www.myglobaltime.com/international-date-line" }, { title: "Why India Has a Single Time Zone", description: "A look into the history and consequences of India's single time zone and the calls for change.", image: "https://static.wixstatic.com/media/31d31f_030e268abdb4428a8ee4f2f62363c90a~mv2.png", link: "https://www.myglobaltime.com/india-single-time-zone" } ];
+
+        // --- ELEMENTS ---
+        const fromCitySelect = document.getElementById('from-city');
+        const toCitySelect = document.getElementById('to-city');
+        const fromTimeInput = document.getElementById('from-time-input');
+        const fromDateDisplay = document.getElementById('from-date-display');
+        const toTimeDisplay = document.getElementById('to-time-display');
+        const toDateDisplay = document.getElementById('to-date-display');
+        const swapBtn = document.getElementById('swap-btn');
+        const blogSliderWrapper = document.getElementById('blog-slider-wrapper');
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate dropdowns
+            populateSelect(fromCitySelect);
+            populateSelect(toCitySelect);
+
+            // Set initial selections
+            fromCitySelect.value = "Mumbai";
+            toCitySelect.value = "New York";
+
+            // Set initial time and perform conversion
+            updateInitialTime();
+            updateConversion();
+
+            // Add event listeners for converter
+            fromCitySelect.addEventListener('change', () => {
+                updateInitialTime();
+                updateConversion();
+            });
+            toCitySelect.addEventListener('change', updateConversion);
+            fromTimeInput.addEventListener('change', updateConversion);
+            swapBtn.addEventListener('click', handleSwap);
+
+            // Populate the blog section and set up scrolling
+            populateBlogSection();
+            setupBlogScrolling();
+        });
+        
+        // --- CONVERTER FUNCTIONS ---
+        function populateSelect(selectElement) {
+            cityNames.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                selectElement.appendChild(option);
+            });
+        }
+        
+        function updateInitialTime() {
+            const fromTimezone = timezones[fromCitySelect.value];
+            const now = new Date();
+            const timeInFromZoneStr = now.toLocaleString('en-US', { timeZone: fromTimezone, hour12: false, hour: '2-digit', minute: '2-digit' });
+            fromTimeInput.value = timeInFromZoneStr.slice(0, 5);
+        }
+
+        function updateConversion() {
+            const fromTimezone = timezones[fromCitySelect.value];
+            const toTimezone = timezones[toCitySelect.value];
+            const inputTime = fromTimeInput.value;
+
+            if (!inputTime || !fromTimezone || !toTimezone) {
+                toTimeDisplay.textContent = '--:--';
+                fromDateDisplay.textContent = '';
+                toDateDisplay.textContent = '';
+                return;
+            }
+
+            const fromDateParts = new Intl.DateTimeFormat('en-CA', {
+                timeZone: fromTimezone,
+                year: 'numeric', month: '2-digit', day: '2-digit'
+            }).formatToParts(new Date()).reduce((acc, part) => {
+                acc[part.type] = part.value;
+                return acc;
+            }, {});
+            
+            const isoString = `${fromDateParts.year}-${fromDateParts.month}-${fromDateParts.day}T${inputTime}:00`;
+            const dateToConvert = new Date(isoString);
+
+            const timeOptions = { timeZone: toTimezone, hour: '2-digit', minute: '2-digit', hour12: true };
+            const dateOptions = { timeZone: toTimezone, weekday: 'long', month: 'long', day: 'numeric' };
+            const fromDateOptions = { timeZone: fromTimezone, weekday: 'long', month: 'long', day: 'numeric' };
+
+            toTimeDisplay.textContent = new Intl.DateTimeFormat('en-US', timeOptions).format(dateToConvert);
+            toDateDisplay.textContent = new Intl.DateTimeFormat('en-US', dateOptions).format(dateToConvert);
+            fromDateDisplay.textContent = new Intl.DateTimeFormat('en-US', fromDateOptions).format(dateToConvert);
+        }
+
+        function handleSwap() {
+            const fromValue = fromCitySelect.value;
+            fromCitySelect.value = toCitySelect.value;
+            toCitySelect.value = fromValue;
+            updateInitialTime();
+            updateConversion();
+        }
+
+        // --- BLOG FUNCTIONS ---
+        function populateBlogSection() {
+            blogPosts.forEach(post => {
+                const slide = document.createElement('div');
+                slide.className = 'scroll-snap-align-start';
+                slide.innerHTML = ` <a href="${post.link}" target="_top" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-indigo-500/30 transition-shadow duration-300 h-full flex flex-col"> <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover"> <div class="p-4 flex-grow"> <h3 class="font-headline text-lg font-bold mb-2">${post.title}</h3> <p class="text-gray-400 text-sm">${post.description}</p> </div> </a> `;
+                blogSliderWrapper.appendChild(slide);
+            });
+        }
+
+        function setupBlogScrolling() {
+            const container = document.getElementById('blog-slider-wrapper');
+            const leftBtn = document.getElementById('scroll-left-btn');
+            const rightBtn = document.getElementById('scroll-right-btn');
+
+            if (!container || !leftBtn || !rightBtn) return;
+
+            const updateArrowStates = () => {
+                leftBtn.disabled = container.scrollLeft <= 0;
+                const maxScrollLeft = container.scrollWidth - container.clientWidth;
+                rightBtn.disabled = container.scrollLeft >= maxScrollLeft - 1;
+            };
+
+            rightBtn.addEventListener('click', () => {
+                const scrollAmount = container.clientWidth * 0.9;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            leftBtn.addEventListener('click', () => {
+                const scrollAmount = container.clientWidth * 0.9;
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+            
+            container.addEventListener('scroll', updateArrowStates);
+            new ResizeObserver(updateArrowStates).observe(container);
+            updateArrowStates();
+        }
+    </script>
+</body>
+</html>

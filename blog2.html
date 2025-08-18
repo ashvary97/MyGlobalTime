@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is UTC? A Simple Guide to the World's Time Standard - MyGlobalTime Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Hides all page scrollbars */
+        html, body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white antialiased">
+
+    <nav x-data="{ mobileMenuOpen: false }" class="bg-gray-800 shadow-md relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <div>
+                    <a href="https://www.myglobaltime.com/" target="_top" class="font-headline text-2xl text-white">MyGlobalTime</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://www.myglobaltime.com/" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="https://www.myglobaltime.com/timeconverter" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Time Converter</a>
+                    
+                    <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+                        <button @mouseover="open = true" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                            <span>Time Zone</span>
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div @mouseover="open = true" x-show="open" x-transition="" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-700 ring-1 ring-gray-600 z-10" style="display: none;">
+                            <a href="https://www.myglobaltime.com/what-is-ist" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">IST</a>
+                            <a href="https://www.myglobaltime.com/what-is-est" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">EST</a>
+                            <a href="https://www.myglobaltime.com/what-is-pst" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">PST</a>
+                        </div>
+                    </div>
+                    
+                    <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+                        <button @mouseover="open = true" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                            <span>Country</span>
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div @mouseover="open = true" x-show="open" x-transition="" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-700 ring-1 ring-gray-600 z-10" style="display: none;">
+                            <a href="https://www.myglobaltime.com/australia" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Australia</a>
+                            <a href="https://www.myglobaltime.com/canada" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Canada</a>
+                            <a href="https://www.myglobaltime.com/france" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">France</a>
+                            <a href="https://www.myglobaltime.com/russia" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Russia</a>
+                            <a href="https://www.myglobaltime.com/uk" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">UK</a>
+                            <a href="https://www.myglobaltime.com/usa" target="_top" class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">USA</a>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.myglobaltime.com/blogs" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg x-show="!mobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        <svg x-show="mobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden absolute top-16 left-0 w-full bg-gray-800 shadow-lg" style="display: none;">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="https://www.myglobaltime.com/" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="https://www.myglobaltime.com/timeconverter" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Time Converter</a>
+                <a href="#" target="_top" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium border-t border-gray-700 mt-2 pt-3">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 md:py-16">
+        <article class="max-w-4xl mx-auto">
+            <header class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+                    What is UTC? A Simple Guide to the World's Time Standard
+                </h1>
+                <p class="mt-4 text-lg text-gray-400">Published on August 16, 2025</p>
+            </header>
+
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
+                <p>You've probably seen it before—letters tacked onto the end of a time, like "14:00 UTC." It pops up in event invitations, flight details, and tech forums. But what exactly is UTC, and why is it so important for a globally connected world?</p>
+                <p>Don't worry, it's not as complicated as it sounds. Let's break down the world's time standard into simple terms.</p>
+                
+                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The "World Clock" That Never Changes</h2>
+                <p>Think of <strong>UTC (Coordinated Universal Time)</strong> as the official, master clock for the entire planet. It's a time standard, not a time zone. This is a crucial difference. While time zones change with the seasons (hello, Daylight Saving Time!), UTC never does. It is the constant, unchanging benchmark against which all our local time zones are measured.</p>
+                <p>It’s based on a network of hundreds of hyper-accurate atomic clocks around the world, making it the most precise time standard we have.</p>
+
+                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">Why Do We Need a Master Clock?</h2>
+                <p>Imagine trying to schedule an international video call. If you say "Let's meet at 10:00 AM," chaos would ensue. 10:00 AM where? In New York? London? Tokyo? Each of those is a completely different moment in time.</p>
+                <p>This is where UTC saves the day. By scheduling the call for "14:00 UTC," everyone, no matter where they are, has a single, unambiguous point of reference. They can then calculate what "14:00 UTC" means in their local time zone.</p>
+                <p>UTC is the universal language of time, essential for:</p>
+                <ul class="list-disc list-inside space-y-4">
+                    <li><strong>Aviation:</strong> Pilots and air traffic controllers rely on UTC to coordinate flights safely across the globe.</li>
+                    <li><strong>The Internet:</strong> Your computer's clock syncs with servers using UTC to ensure everything from emails to financial transactions is timestamped correctly.</li>
+                    <li><strong>International Business:</strong> Global teams use it to schedule meetings and deadlines without confusion.</li>
+                    <li><strong>Scientists:</strong> Researchers use it to time experiments and astronomical events with precision.</li>
+                </ul>
+
+                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">How UTC and Time Zones Work Together</h2>
+                <p>Your local time is simply UTC plus or minus a certain number of hours. This difference is called an "offset."</p>
+                
+                <div class="bg-gray-800/50 border-l-4 border-indigo-400 p-6 rounded-r-lg my-6">
+                    <p class="font-bold text-white mb-4">For example:</p>
+                    <ul class="space-y-3">
+                        <li><strong>India Standard Time (IST) is UTC+5:30.</strong> This means it is 5 hours and 30 minutes ahead of UTC. So, if it's 10:00 UTC, the time in India is 15:30 (3:30 PM).</li>
+                        <li><strong>Eastern Standard Time (EST) in North America is UTC-5:00.</strong> This means it is 5 hours behind UTC. So, if it's 10:00 UTC, the time in New York is 05:00 (5:00 AM).</li>
+                    </ul>
+                </div>
+                
+                <p>Think of UTC as the zero point on a giant time ruler. Some locations are a few notches ahead, and some are a few notches behind, but they all measure from the same starting point.</p>
+
+                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The Bottom Line</h2>
+                <p>You might not use it every day, but UTC is the silent, invisible force that keeps our global schedules in sync. It’s the ultimate reference point in a world that never stops moving, ensuring that no matter where we are, we all have a shared understanding of the most fundamental thing of all: when.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="text-center text-gray-500 py-8 mt-16 border-t border-gray-800">
+        <p>&copy; 2025 MyGlobalTime. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
