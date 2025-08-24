@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYFLKB3JF4"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYFLKB3JF4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -33,21 +32,16 @@
             box-shadow: 0 0 5px rgba(79, 70, 229, 0.5), 0 0 10px rgba(79, 70, 229, 0.3);
         }
         
-        /* Custom scrollbar styles for the blog section (optional) */
-        .blog-container::-webkit-scrollbar {
-            height: 8px;
+        /* Custom scrollbar for search results */
+        #search-results::-webkit-scrollbar {
+            width: 8px;
         }
-        .blog-container::-webkit-scrollbar-track {
-            background: transparent;
+        #search-results::-webkit-scrollbar-track {
+            background: #2d3748; /* gray-800 */
         }
-        .blog-container::-webkit-scrollbar-thumb {
-            background-color: #4a5568;
+        #search-results::-webkit-scrollbar-thumb {
+            background-color: #4a5568; /* gray-600 */
             border-radius: 4px;
-        }
-        /* Style for disabled scroll arrows */
-        .scroll-btn:disabled {
-            opacity: 0.2;
-            cursor: not-allowed;
         }
     </style>
 </head>
@@ -73,38 +67,31 @@
             </section>
 
             <section class="mb-16">
-                <h2 class="text-2xl font-bold text-center mb-8">Major World Cities</h2>
+                <h2 class="text-2xl font-bold text-center mb-8">World Clocks</h2>
                 <div id="clocks-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    </div>
+
+                <div class="mt-12">
+                    <h2 class="text-2xl font-bold text-center mb-4">Add a City</h2>
+                    <div class="max-w-sm mx-auto">
+                        <div class="relative">
+                            <div class="flex items-center gap-2">
+                                <input type="text" id="city-input" placeholder="Search for a city..." class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" autocomplete="off">
+                                <button id="add-city-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-5 rounded-lg transition-colors duration-300 flex-shrink-0">Add</button>
+                            </div>
+                            <div id="search-results" class="absolute z-10 w-full bg-gray-700 rounded-b-lg mt-1 max-h-60 overflow-y-auto hidden shadow-lg">
+                                </div>
+                        </div>
+                        <p id="error-message" class="text-red-400 mt-2 h-5 text-center"></p>
+                    </div>
                 </div>
-            </section>
-            
-            <section class="mb-16 text-center">
-                <h3 class="text-xl font-bold mb-4">Add a City</h3>
-                <div class="flex justify-center items-center gap-2 max-w-sm mx-auto">
-                    <input type="text" id="city-input" list="city-datalist" placeholder="e.g., Paris" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <datalist id="city-datalist"></datalist>
-                    <button id="add-city-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-5 rounded-lg transition-colors duration-300">Add</button>
-                </div>
-                <p id="error-message" class="text-red-400 mt-2 h-5"></p>
             </section>
             
             <section class="py-16 bg-gray-800/20 rounded-lg">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-3xl font-bold text-center mb-12">From Our Blog</h2>
-                    
-                    <div class="relative">
-                        <button id="scroll-left-btn" class="scroll-btn absolute top-1/2 left-0 md:-left-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        </button>
-                        
-                        <div id="blog-slider-wrapper" class="blog-container grid grid-flow-col auto-cols-[90%] sm:auto-cols-[45%] lg:auto-cols-[31%] gap-6 overflow-x-auto pb-4" style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;">
-                            </div>
-
-                        <button id="scroll-right-btn" class="scroll-btn absolute top-1/2 right-0 md:-right-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </button>
-                    </div>
-
+                    <div id="blog-slider-container" class="relative">
+                        </div>
                 </div>
             </section>
         </main>
@@ -112,130 +99,224 @@
 
     <script>
         // --- DATA ---
-        const timezones = { "London": "Europe/London", "Paris": "Europe/Paris", "New York": "America/New_York", "Los Angeles": "America/Los_Angeles", "Tokyo": "Asia/Tokyo", "Sydney": "Australia/Sydney", "Dubai": "Asia/Dubai", "Singapore": "Asia/Singapore", "Moscow": "Europe/Moscow", "Beijing": "Asia/Shanghai", "Mumbai": "Asia/Kolkata", "Rio de Janeiro": "America/Sao_Paulo", "Cairo": "Africa/Cairo", "Chicago": "America/Chicago", "Toronto": "America/Toronto", "Berlin": "Europe/Berlin", "Rome": "Europe/Rome", "Seoul": "Asia/Seoul", "Bangkok": "Asia/Bangkok", "Johannesburg": "Africa/Johannesburg" };
-        const blogPosts = [ { title: "Daylight Saving Time Explained", description: "Explore the surprising history and heated debates behind the twice-yearly ritual of changing our clocks.", image: "https://static.wixstatic.com/media/31d31f_ec75f5b0dbfa408bb86f301a96cac4dc~mv2.png", link: "https://www.myglobaltime.com/daylight-saving-time-explained" }, { title: "What is UTC? A Simple Guide", description: "Demystify the master clock that keeps the entire planet in sync, from aviation to the internet.", image: "https://static.wixstatic.com/media/31d31f_7c17d25ef1914f058b2bc407cb525b46~mv2.png", link: "https://www.myglobaltime.com/what-is-utc" }, { title: "The International Date Line", description: "Journey to the middle of the Pacific to understand the imaginary line where a new day is born.", image: "https://static.wixstatic.com/media/31d31f_a7a0cf78f82b4693a4af4003457256f6~mv2.png", link: "https://www.myglobaltime.com/international-date-line" }, { title: "Why India Has a Single Time Zone", description: "A look into the history and consequences of India's single time zone and the calls for change.", image: "https://static.wixstatic.com/media/31d31f_030e268abdb4428a8ee4f2f62363c90a~mv2.png", link: "https://www.myglobaltime.com/india-single-time-zone" } ];
-
+        const cities = [
+            { name: "Tokyo", country: "Japan", timezone: "Asia/Tokyo" }, { name: "Jakarta", country: "Indonesia", timezone: "Asia/Jakarta" }, { name: "Delhi", country: "India", timezone: "Asia/Kolkata" }, { name: "Mumbai", country: "India", timezone: "Asia/Kolkata" }, { name: "Manila", country: "Philippines", timezone: "Asia/Manila" },
+            { name: "Shanghai", country: "China", timezone: "Asia/Shanghai" }, { name: "São Paulo", country: "Brazil", timezone: "America/Sao_Paulo" }, { name: "Seoul", country: "South Korea", timezone: "Asia/Seoul" }, { name: "Mexico City", country: "Mexico", timezone: "America/Mexico_City" }, { name: "Guangzhou", country: "China", timezone: "Asia/Shanghai" },
+            { name: "Beijing", country: "China", timezone: "Asia/Shanghai" }, { name: "Cairo", country: "Egypt", timezone: "Africa/Cairo" }, { name: "New York", country: "USA", timezone: "America/New_York" }, { name: "Kolkata", country: "India", timezone: "Asia/Kolkata" }, { name: "Bangkok", country: "Thailand", timezone: "Asia/Bangkok" },
+            { name: "Buenos Aires", country: "Argentina", timezone: "America/Argentina/Buenos_Aires" }, { name: "Shenzhen", country: "China", timezone: "Asia/Shanghai" }, { name: "Moscow", country: "Russia", timezone: "Europe/Moscow" }, { name: "Lagos", country: "Nigeria", timezone: "Africa/Lagos" }, { name: "Istanbul", country: "Turkey", timezone: "Europe/Istanbul" },
+            { name: "Rio de Janeiro", country: "Brazil", timezone: "America/Sao_Paulo" }, { name: "Karachi", country: "Pakistan", timezone: "Asia/Karachi" }, { name: "Kinshasa", country: "DR Congo", timezone: "Africa/Kinshasa" }, { name: "Tianjin", country: "China", timezone: "Asia/Shanghai" }, { name: "Lima", country: "Peru", timezone: "America/Lima" },
+            { name: "London", country: "UK", timezone: "Europe/London" }, { name: "Bogotá", country: "Colombia", timezone: "America/Bogota" }, { name: "Ho Chi Minh City", country: "Vietnam", timezone: "Asia/Ho_Chi_Minh" }, { name: "Hong Kong", country: "Hong Kong", timezone: "Asia/Hong_Kong" }, { name: "Bangalore", country: "India", timezone: "Asia/Kolkata" },
+            { name: "Dhaka", country: "Bangladesh", timezone: "Asia/Dhaka" }, { name: "Chennai", country: "India", timezone: "Asia/Kolkata" }, { name: "Lahore", country: "Pakistan", timezone: "Asia/Karachi" }, { name: "Chongqing", country: "China", timezone: "Asia/Shanghai" }, { name: "Hyderabad", country: "India", timezone: "Asia/Kolkata" },
+            { name: "Wuhan", country: "China", timezone: "Asia/Shanghai" }, { name: "Taipei", country: "Taiwan", timezone: "Asia/Taipei" }, { name: "Chengdu", country: "China", timezone: "Asia/Shanghai" }, { name: "Nanjing", country: "China", timezone: "Asia/Shanghai" }, { name: "Xi'an", country: "China", timezone: "Asia/Shanghai" },
+            { name: "Santiago", country: "Chile", timezone: "America/Santiago" }, { name: "Ahmedabad", country: "India", timezone: "Asia/Kolkata" }, { name: "Singapore", country: "Singapore", timezone: "Asia/Singapore" }, { name: "Ankara", country: "Turkey", timezone: "Europe/Istanbul" }, { name: "Yangon", country: "Myanmar", timezone: "Asia/Yangon" },
+            { name: "Abidjan", country: "Côte d'Ivoire", timezone: "Africa/Abidjan" }, { name: "Alexandria", country: "Egypt", timezone: "Africa/Cairo" }, { name: "Kuala Lumpur", country: "Malaysia", timezone: "Asia/Kuala_Lumpur" }, { name: "Giza", country: "Egypt", timezone: "Africa/Cairo" }, { name: "Canoas", country: "Brazil", timezone: "America/Sao_Paulo" },
+            { name: "Los Angeles", country: "USA", timezone: "America/Los_Angeles" }, { name: "Madrid", country: "Spain", timezone: "Europe/Madrid" }, { name: "Pune", country: "India", timezone: "Asia/Kolkata" }, { name: "Nairobi", country: "Kenya", timezone: "Africa/Nairobi" }, { name: "Casablanca", country: "Morocco", timezone: "Africa/Casablanca" },
+            { name: "Cape Town", country: "South Africa", timezone: "Africa/Johannesburg" }, { name: "Surat", country: "India", timezone: "Asia/Kolkata" }, { name: "Dar es Salaam", country: "Tanzania", timezone: "Africa/Dar_es_Salaam" }, { name: "Riyadh", country: "Saudi Arabia", timezone: "Asia/Riyadh" }, { name: "Jeddah", country: "Saudi Arabia", timezone: "Asia/Riyadh" },
+            { name: "Berlin", country: "Germany", timezone: "Europe/Berlin" }, { name: "Caracas", country: "Venezuela", timezone: "America/Caracas" }, { name: "Saint Petersburg", country: "Russia", timezone: "Europe/Moscow" }, { name: "Addis Ababa", country: "Ethiopia", timezone: "Africa/Addis_Ababa" }, { name: "Nanchang", country: "China", timezone: "Asia/Shanghai" },
+            { name: "Jaipur", country: "India", timezone: "Asia/Kolkata" }, { name: "Chicago", country: "USA", timezone: "America/Chicago" }, { name: "Toronto", country: "Canada", timezone: "America/Toronto" }, { name: "Sydney", country: "Australia", timezone: "Australia/Sydney" }, { name: "Melbourne", country: "Australia", timezone: "Australia/Melbourne" },
+            { name: "Dubai", country: "UAE", timezone: "Asia/Dubai" }, { name: "Paris", country: "France", timezone: "Europe/Paris" }, { name: "Rome", country: "Italy", timezone: "Europe/Rome" }, { name: "Houston", country: "USA", timezone: "America/Chicago" }, { name: "Johannesburg", country: "South Africa", timezone: "Africa/Johannesburg" },
+            { name: "Auckland", country: "New Zealand", timezone: "Pacific/Auckland" }, { name: "Vancouver", country: "Canada", timezone: "America/Vancouver" }, { name: "Montreal", country: "Canada", timezone: "America/Toronto" }, { name: "Stockholm", country: "Sweden", timezone: "Europe/Stockholm" }, { name: "Oslo", country: "Norway", timezone: "Europe/Oslo" },
+            { name: "Copenhagen", country: "Denmark", timezone: "Europe/Copenhagen" }, { name: "Helsinki", country: "Finland", timezone: "Europe/Helsinki" }, { name: "Lisbon", country: "Portugal", timezone: "Europe/Lisbon" }, { name: "Dublin", country: "Ireland", timezone: "Europe/Dublin" }, { name: "Prague", country: "Czech Republic", timezone: "Europe/Prague" },
+            { name: "Warsaw", country: "Poland", timezone: "Europe/Warsaw" }, { name: "Budapest", country: "Hungary", timezone: "Europe/Budapest" }, { name: "Vienna", country: "Austria", timezone: "Europe/Vienna" }, { name: "Zurich", country: "Switzerland", timezone: "Europe/Zurich" }, { name: "Geneva", country: "Switzerland", timezone: "Europe/Zurich" },
+            { name: "Brussels", country: "Belgium", timezone: "Europe/Brussels" }, { name: "Amsterdam", country: "Netherlands", timezone: "Europe/Amsterdam" }, { name: "Athens", country: "Greece", timezone: "Europe/Athens" }, { name: "Kyiv", country: "Ukraine", timezone: "Europe/Kiev" }, { name: "Bucharest", country: "Romania", timezone: "Europe/Bucharest" },
+        ];
+        
         // --- ELEMENTS ---
         const localTimeDisplay = document.getElementById('local-time-display');
         const localTimezoneDisplay = document.getElementById('local-timezone-display');
         const clocksGrid = document.getElementById('clocks-grid');
         const cityInput = document.getElementById('city-input');
         const addCityBtn = document.getElementById('add-city-btn');
+        const searchResults = document.getElementById('search-results');
         const errorMessage = document.getElementById('error-message');
-        const cityDatalist = document.getElementById('city-datalist');
-        const blogSliderWrapper = document.getElementById('blog-slider-wrapper');
+        const blogSliderContainer = document.getElementById('blog-slider-container');
 
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Populate city datalist
-            for (const city in timezones) {
-                const option = document.createElement('option');
-                option.value = city;
-                cityDatalist.appendChild(option);
-            }
-            // Add initial clocks
-            const initialCities = ["New York", "London", "Tokyo", "Sydney"];
-            initialCities.forEach(city => createClockCard(city, timezones[city]));
-            // Start clock updates
+            const initialCities = [
+                { name: "New York", country: "USA", timezone: "America/New_York" },
+                { name: "London", country: "UK", timezone: "Europe/London" },
+                { name: "Tokyo", country: "Japan", timezone: "Asia/Tokyo" },
+                { name: "Sydney", country: "Australia", timezone: "Australia/Sydney" }
+            ];
+            initialCities.forEach(city => createClockCard(city));
+            
             updateClocks(); 
             setInterval(updateClocks, 1000);
-            // Add city event listeners
-            addCityBtn.addEventListener('click', handleAddCity);
+
+            // Event Listeners
+            cityInput.addEventListener('input', handleSearch);
+            cityInput.addEventListener('focus', handleSearch);
+            addCityBtn.addEventListener('click', handleAddButtonClick);
             cityInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') handleAddCity();
+                if (e.key === 'Enter') {
+                    handleAddButtonClick();
+                }
             });
 
-            // Populate the blog section and set up scrolling
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.relative')) { // Hide results if click is outside the search component
+                    searchResults.classList.add('hidden');
+                }
+            });
+
             populateBlogSection();
-            setupBlogScrolling();
         });
 
         // --- FUNCTIONS ---
-        function createClockCard(city, timezone) {
+        function handleSearch(e) {
+            const query = e.target.value.toLowerCase();
+            searchResults.innerHTML = '';
+            
+            if (query.length === 0) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+
+            const filteredCities = cities.filter(city => 
+                city.name.toLowerCase().startsWith(query) || 
+                city.country.toLowerCase().startsWith(query)
+            ).slice(0, 50);
+
+            if (filteredCities.length > 0) {
+                filteredCities.forEach(city => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'px-4 py-2 hover:bg-gray-600 cursor-pointer';
+                    resultItem.innerHTML = `${city.name}, <span class="text-gray-400">${city.country}</span>`;
+                    resultItem.addEventListener('click', () => {
+                        handleAddCity(city);
+                    });
+                    searchResults.appendChild(resultItem);
+                });
+                searchResults.classList.remove('hidden');
+            } else {
+                searchResults.classList.add('hidden');
+            }
+        }
+        
+        function handleAddButtonClick() {
+            const query = cityInput.value.trim().toLowerCase();
+            if (!query) return;
+
+            const firstMatch = cities.find(city => 
+                city.name.toLowerCase().startsWith(query) || 
+                city.country.toLowerCase().startsWith(query)
+            );
+            
+            if (firstMatch) {
+                handleAddCity(firstMatch);
+            } else {
+                errorMessage.textContent = 'City not found. Please try another.';
+            }
+        }
+
+        function handleAddCity(city) {
+            errorMessage.textContent = '';
+            const existingCard = [...document.querySelectorAll('.clock-card h3')].find(h3 => h3.textContent.toLowerCase() === city.name.toLowerCase());
+
+            if (existingCard) {
+                errorMessage.textContent = `${city.name} is already displayed.`;
+                const card = existingCard.closest('.clock-card');
+                card.classList.add('animate-pulse');
+                setTimeout(() => card.classList.remove('animate-pulse'), 1000);
+            } else {
+                 createClockCard(city);
+            }
+            cityInput.value = '';
+            searchResults.classList.add('hidden');
+        }
+
+        function createClockCard(city) {
             const card = document.createElement('div');
-            card.className = 'clock-card bg-gray-800 rounded-lg p-4 text-center transition-transform hover:scale-105 duration-300';
-            card.dataset.timezone = timezone;
-            card.innerHTML = ` <div class="flex justify-between items-start"> <h3 class="text-xl font-bold text-left">${city}</h3> <button class="remove-btn text-gray-500 hover:text-red-400 text-xl font-sans">&times;</button> </div> <div class="time-display text-4xl font-bold my-2 tracking-tighter">--:--:--</div> <div class="date-display text-sm text-gray-400">---, --- --</div> `;
+            card.className = 'clock-card bg-gray-800 rounded-lg p-4 text-center transition-transform hover:scale-105 duration-300 relative';
+            card.dataset.timezone = city.timezone;
+            
+            card.innerHTML = `
+                <button class="remove-btn absolute top-2 right-3 text-gray-500 hover:text-red-400 text-2xl font-sans leading-none">&times;</button>
+                <div class="text-left">
+                    <h3 class="text-xl font-bold">${city.name}</h3>
+                    <p class="text-xs text-gray-400">${city.country}</p>
+                </div>
+                <div class="time-display text-4xl font-bold my-2 tracking-tighter">--:--:--</div>
+                <div class="date-display text-sm text-gray-400">---, --- --</div>
+            `;
             clocksGrid.appendChild(card);
             card.querySelector('.remove-btn').addEventListener('click', (e) => {
                 e.stopPropagation();
                 card.remove();
             });
         }
+
         function updateClocks() {
             const now = new Date();
-            const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            localTimeDisplay.textContent = now.toLocaleTimeString('en-US');
-            localTimezoneDisplay.textContent = localTimezone.replace(/_/g, ' ');
+            try {
+                const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                localTimeDisplay.textContent = now.toLocaleTimeString('en-US');
+                localTimezoneDisplay.textContent = localTimezone.replace(/_/g, ' ');
+            } catch (e) {
+                localTimeDisplay.textContent = 'N/A';
+                localTimezoneDisplay.textContent = 'Cannot determine local time';
+            }
+
             document.querySelectorAll('.clock-card').forEach(card => {
                 const timezone = card.dataset.timezone;
                 if (timezone) {
                     try {
-                        const timeOptions = { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+                        const timeOptions = { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' };
                         const dateOptions = { timeZone: timezone, weekday: 'short', month: 'short', day: 'numeric' };
-                        card.querySelector('.time-display').textContent = new Intl.DateTimeFormat('en-US', timeOptions).format(now);
+                        card.querySelector('.time-display').textContent = new Intl.DateTimeFormat('en-GB', timeOptions).format(now);
                         card.querySelector('.date-display').textContent = new Intl.DateTimeFormat('en-US', dateOptions).format(now);
                     } catch (error) {
                         card.querySelector('.time-display').textContent = 'Invalid';
-                        console.error(`Invalid timezone: ${timezone}`);
                     }
                 }
             });
         }
-        function handleAddCity() {
-            const cityName = cityInput.value.trim();
-            const cityKey = Object.keys(timezones).find(k => k.toLowerCase() === cityName.toLowerCase());
-            errorMessage.textContent = '';
-            if (cityKey) {
-                const existingCard = [...document.querySelectorAll('.clock-card h3')].find(h3 => h3.textContent.toLowerCase() === cityKey.toLowerCase());
-                if (existingCard) {
-                    errorMessage.textContent = `${cityKey} is already displayed.`;
-                    return;
-                }
-                createClockCard(cityKey, timezones[cityKey]);
-                cityInput.value = '';
-            } else {
-                errorMessage.textContent = 'City not found. Please try another.';
-            }
-        }
+
+        // --- BLOG SECTION ---
+        const blogPosts = [
+            { title: "Daylight Saving Time Explained", description: "Explore the surprising history and heated debates behind the twice-yearly ritual of changing our clocks.", image: "https://static.wixstatic.com/media/31d31f_ec75f5b0dbfa408bb86f301a96cac4dc~mv2.png", link: "https://www.myglobaltime.com/daylight-saving-time-explained" },
+            { title: "What is UTC? A Simple Guide", description: "Demystify the master clock that keeps the entire planet in sync, from aviation to the internet.", image: "https://static.wixstatic.com/media/31d31f_7c17d25ef1914f058b2bc407cb525b46~mv2.png", link: "https://www.myglobaltime.com/what-is-utc" },
+            { title: "The International Date Line", description: "Journey to the middle of the Pacific to understand the imaginary line where a new day is born.", image: "https://static.wixstatic.com/media/31d31f_a7a0cf78f82b4693a4af4003457256f6~mv2.png", link: "https://www.myglobaltime.com/international-date-line" },
+            { title: "Why India Has a Single Time Zone", description: "A look into the history and consequences of India's single time zone and the calls for change.", image: "https://static.wixstatic.com/media/31d31f_030e268abdb4428a8ee4f2f62363c90a~mv2.png", link: "https://www.myglobaltime.com/india-single-time-zone" }
+        ];
+
         function populateBlogSection() {
+            if (!blogSliderContainer) return;
+            blogSliderContainer.innerHTML = `
+                <button id="scroll-left-btn" class="scroll-btn absolute top-1/2 left-0 md:-left-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity disabled:opacity-20 disabled:cursor-not-allowed">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <div id="blog-slider-wrapper" class="blog-container grid grid-flow-col auto-cols-[90%] sm:auto-cols-[45%] lg:auto-cols-[31%] gap-6 overflow-x-auto pb-4" style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;">
+                </div>
+                <button id="scroll-right-btn" class="scroll-btn absolute top-1/2 right-0 md:-right-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity disabled:opacity-20 disabled:cursor-not-allowed">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            `;
+            const blogSliderWrapper = document.getElementById('blog-slider-wrapper');
             blogPosts.forEach(post => {
                 const slide = document.createElement('div');
                 slide.className = 'scroll-snap-align-start';
-                slide.innerHTML = ` <a href="${post.link}" target="_top" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-indigo-500/30 transition-shadow duration-300 h-full flex flex-col"> <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover"> <div class="p-4 flex-grow"> <h3 class="font-headline text-lg font-bold mb-2">${post.title}</h3> <p class="text-gray-400 text-sm">${post.description}</p> </div> </a> `;
+                slide.innerHTML = `<a href="${post.link}" target="_top" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-indigo-500/30 transition-shadow duration-300 h-full flex flex-col"><img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover"><div class="p-4 flex-grow"><h3 class="font-headline text-lg font-bold mb-2">${post.title}</h3><p class="text-gray-400 text-sm">${post.description}</p></div></a>`;
                 blogSliderWrapper.appendChild(slide);
             });
+            setupBlogScrolling();
         }
 
-        // --- JAVASCRIPT FOR ARROW SCROLLING ---
         function setupBlogScrolling() {
             const container = document.getElementById('blog-slider-wrapper');
             const leftBtn = document.getElementById('scroll-left-btn');
             const rightBtn = document.getElementById('scroll-right-btn');
-
             if (!container || !leftBtn || !rightBtn) return;
-
-            const updateArrowStates = () => {
+            const updateArrows = () => {
                 leftBtn.disabled = container.scrollLeft <= 0;
-                const maxScrollLeft = container.scrollWidth - container.clientWidth;
-                rightBtn.disabled = container.scrollLeft >= maxScrollLeft - 1;
+                rightBtn.disabled = container.scrollLeft >= container.scrollWidth - container.clientWidth - 1;
             };
-
-            rightBtn.addEventListener('click', () => {
-                const scrollAmount = container.clientWidth * 0.9;
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            });
-
-            leftBtn.addEventListener('click', () => {
-                const scrollAmount = container.clientWidth * 0.9;
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            });
-            
-            container.addEventListener('scroll', updateArrowStates);
-            
-            new ResizeObserver(updateArrowStates).observe(container);
-
-            updateArrowStates();
+            rightBtn.addEventListener('click', () => container.scrollBy({ left: container.clientWidth * 0.9, behavior: 'smooth' }));
+            leftBtn.addEventListener('click', () => container.scrollBy({ left: -container.clientWidth * 0.9, behavior: 'smooth' }));
+            container.addEventListener('scroll', updateArrows);
+            new ResizeObserver(updateArrows).observe(container);
+            updateArrows();
         }
     </script>
     <script src="main.js"></script>
