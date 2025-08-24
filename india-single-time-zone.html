@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYFLKB3JF4"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYFLKB3JF4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -27,64 +27,148 @@
         h1, h2, h3, .font-headline {
             font-family: 'Playfair Display', serif;
         }
-        
+        /* Custom scrollbar styles for the blog section */
+        .blog-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .blog-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .blog-container::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 4px;
+        }
+        /* Style for disabled scroll arrows */
+        .scroll-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white antialiased">
 
     <header id="main-header"></header>
-    <main class="container mx-auto px-4 py-8 md:py-16">
-        <article class="max-w-4xl mx-auto">
-            <header class="text-center mb-12">
-                <h1 class="text-4xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
-                    Why India Has a Single Time Zone (And the Debate for More)
-                </h1>
-                <p class="mt-4 text-lg text-gray-400">Published on August 16, 2025</p>
-            </header>
+    <div class="container mx-auto px-4 py-8 md:py-16">
+        <main>
+            <article class="max-w-4xl mx-auto">
+                <header class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+                        Why India Has a Single Time Zone (And the Debate for More)
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-400">Published on August 16, 2025</p>
+                </header>
 
-            <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
-                <p>India is a land of incredible diversity, from its languages and cultures to its vast and varied landscapes. But there's one area where the country is surprisingly uniform: its time. Despite stretching nearly 3,000 kilometers from east to west, the entire nation of over 1.4 billion people operates on a single time zone: <strong>India Standard Time (IST)</strong>.</p>
-                <p>How is this possible? And is it actually a good idea? Let's explore the reasons behind India's single time zone and the ongoing debate to add another.</p>
-                
-                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">A Decision for Unity</h2>
-                <p>The choice to have one time zone for the entire country was made after India gained independence in 1947. The primary goal was to foster national unity and simplicity. By establishing a single, standard time, the government aimed to reduce confusion and create a unified administrative system for railways, radio broadcasts, and government offices.</p>
-                <p>India Standard Time (UTC+5:30) was chosen as a compromise. It’s based on the longitude that runs through the city of Mirzapur in Uttar Pradesh, which is roughly in the center of the country. This decision meant that no part of the country would be drastically far from the standard meridian.</p>
+                <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p>India is a land of incredible diversity, from its languages and cultures to its vast and varied landscapes. But there's one area where the country is surprisingly uniform: its time. Despite stretching nearly 3,000 kilometers from east to west, the entire nation of over 1.4 billion people operates on a single time zone: <strong>India Standard Time (IST)</strong>.</p>
+                    <p>How is this possible? And is it actually a good idea? Let's explore the reasons behind India's single time zone and the ongoing debate to add another.</p>
+                    
+                    <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">A Decision for Unity</h2>
+                    <p>The choice to have one time zone for the entire country was made after India gained independence in 1947. The primary goal was to foster national unity and simplicity. By establishing a single, standard time, the government aimed to reduce confusion and create a unified administrative system for railways, radio broadcasts, and government offices.</p>
+                    <p>India Standard Time (UTC+5:30) was chosen as a compromise. It’s based on the longitude that runs through the city of Mirzapur in Uttar Pradesh, which is roughly in the center of the country. This decision meant that no part of the country would be drastically far from the standard meridian.</p>
 
-                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The Sun Doesn't Follow the Clock</h2>
-                <p>While the single time zone works well on paper, it creates a significant mismatch with the natural rhythm of the sun, especially at the country's eastern and western extremities.</p>
-                <p>Consider this:</p>
-                <ul class="list-disc list-inside space-y-4">
-                    <li>In <strong>Dong, Arunachal Pradesh</strong>, in the far northeast, the sun can rise as early as 4:15 AM.</li>
-                    <li>In <strong>Ghuar Mota, Gujarat</strong>, in the far west, the sun rises almost two hours later, around 6:15 AM.</li>
-                </ul>
-                <p>This discrepancy has real-world consequences. In the northeast, the sun is already high in the sky when offices and schools open at 10 AM, leading to a loss of productive daylight hours in the morning. By the time the workday ends, it's often dark. This mismatch can lead to lower productivity and higher electricity consumption for lighting.</p>
-                
-                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The Debate for a Second Time Zone</h2>
-                <p>For years, there has been a growing call, particularly from the northeastern states, to introduce a second time zone for India.</p>
-                <div class="bg-gray-800/50 border-l-4 border-indigo-400 p-6 rounded-r-lg my-6">
-                    <p><strong>The Proposal:</strong> The most common suggestion is to create a new time zone, <strong>UTC+6:30</strong>, for the northeastern region. This would be one hour ahead of IST. Some have informally dubbed this proposed time zone "Chai Baganti Time" (Tea Garden Time), a nod to the region's famous tea plantations, where workers have long followed a schedule better aligned with the sun.</p>
+                    <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The Sun Doesn't Follow the Clock</h2>
+                    <p>While the single time zone works well on paper, it creates a significant mismatch with the natural rhythm of the sun, especially at the country's eastern and western extremities.</p>
+                    <p>Consider this:</p>
+                    <ul class="list-disc list-inside space-y-4">
+                        <li>In <strong>Dong, Arunachal Pradesh</strong>, in the far northeast, the sun can rise as early as 4:15 AM.</li>
+                        <li>In <strong>Ghuar Mota, Gujarat</strong>, in the far west, the sun rises almost two hours later, around 6:15 AM.</li>
+                    </ul>
+                    <p>This discrepancy has real-world consequences. In the northeast, the sun is already high in the sky when offices and schools open at 10 AM, leading to a loss of productive daylight hours in the morning. By the time the workday ends, it's often dark. This mismatch can lead to lower productivity and higher electricity consumption for lighting.</p>
+                    
+                    <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The Debate for a Second Time Zone</h2>
+                    <p>For years, there has been a growing call, particularly from the northeastern states, to introduce a second time zone for India.</p>
+                    <div class="bg-gray-800/50 border-l-4 border-indigo-400 p-6 rounded-r-lg my-6">
+                        <p><strong>The Proposal:</strong> The most common suggestion is to create a new time zone, <strong>UTC+6:30</strong>, for the northeastern region. This would be one hour ahead of IST. Some have informally dubbed this proposed time zone "Chai Baganti Time" (Tea Garden Time), a nod to the region's famous tea plantations, where workers have long followed a schedule better aligned with the sun.</p>
+                    </div>
+                    
+                    <h3 class="font-headline text-2xl font-bold mt-10 mb-4 text-gray-200">The Pros:</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>Energy Savings:</strong> More daylight during waking hours could save millions of units of electricity.</li>
+                        <li><strong>Increased Productivity:</strong> Aligning work schedules with natural daylight could boost the productivity and well-being of millions of people.</li>
+                        <li><strong>Better Quality of Life:</strong> People in the northeast would have more daylight in the evenings for leisure and family activities.</li>
+                    </ul>
+
+                    <h3 class="font-headline text-2xl font-bold mt-10 mb-4 text-gray-200">The Cons:</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>Logistical Chaos:</strong> A second time zone could create confusion for railway and flight schedules, which are currently synchronized across the country.</li>
+                        <li><strong>Potential for Accidents:</strong> The risk of accidents at the "border" of the two time zones could increase.</li>
+                        <li><strong>Threat to National Unity:</strong> Some fear that creating a separate time zone could foster a sense of division from the rest of the country.</li>
+                    </ul>
+
+                    <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">A Timely Question</h2>
+                    <p>For now, India continues to operate on a single time zone. The government has researched the issue but has so far decided against making a change, citing the potential for chaos.</p>
+                    <p>The debate, however, highlights a fascinating challenge: how does a country as vast and diverse as India balance the need for national unity with the practical, daily realities of its people? It's a question of time that is yet to be resolved.</p>
                 </div>
+            </article>
+        </main>
+
+        <section class="py-16 mt-16 bg-gray-800/20 rounded-lg overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">From Our Blog</h2>
                 
-                <h3 class="font-headline text-2xl font-bold mt-10 mb-4 text-gray-200">The Pros:</h3>
-                <ul class="list-disc list-inside space-y-3">
-                    <li><strong>Energy Savings:</strong> More daylight during waking hours could save millions of units of electricity.</li>
-                    <li><strong>Increased Productivity:</strong> Aligning work schedules with natural daylight could boost the productivity and well-being of millions of people.</li>
-                    <li><strong>Better Quality of Life:</strong> People in the northeast would have more daylight in the evenings for leisure and family activities.</li>
-                </ul>
+                <div class="relative">
+                    <button id="scroll-left-btn" class="scroll-btn absolute top-1/2 left-4 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    
+                    <div id="blog-slider-wrapper" class="blog-container grid grid-flow-col auto-cols-[90%] sm:auto-cols-[45%] lg:auto-cols-[31%] gap-6 overflow-x-auto pb-4 px-16" style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;">
+                        </div>
 
-                <h3 class="font-headline text-2xl font-bold mt-10 mb-4 text-gray-200">The Cons:</h3>
-                <ul class="list-disc list-inside space-y-3">
-                    <li><strong>Logistical Chaos:</strong> A second time zone could create confusion for railway and flight schedules, which are currently synchronized across the country.</li>
-                    <li><strong>Potential for Accidents:</strong> The risk of accidents at the "border" of the two time zones could increase.</li>
-                    <li><strong>Threat to National Unity:</strong> Some fear that creating a separate time zone could foster a sense of division from the rest of the country.</li>
-                </ul>
-
-                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">A Timely Question</h2>
-                <p>For now, India continues to operate on a single time zone. The government has researched the issue but has so far decided against making a change, citing the potential for chaos.</p>
-                <p>The debate, however, highlights a fascinating challenge: how does a country as vast and diverse as India balance the need for national unity with the practical, daily realities of its people? It's a question of time that is yet to be resolved.</p>
+                    <button id="scroll-right-btn" class="scroll-btn absolute top-1/2 right-4 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
             </div>
-        </article>
-    </main>
-<script src="main.js"></script>
+        </section>
+    </div>
+<script>
+    // --- BLOG DATA & FUNCTIONS ---
+    const blogPosts = [
+        { title: "Daylight Saving Time Explained", description: "Explore the surprising history and heated debates behind the twice-yearly ritual of changing our clocks.", image: "https://static.wixstatic.com/media/31d31f_ec75f5b0dbfa408bb86f301a96cac4dc~mv2.png", link: "https://www.myglobaltime.com/daylight-saving-time-explained" },
+        { title: "What is UTC? A Simple Guide", description: "Demystify the master clock that keeps the entire planet in sync, from aviation to the internet.", image: "https://static.wixstatic.com/media/31d31f_7c17d25ef1914f058b2bc407cb525b46~mv2.png", link: "https://www.myglobaltime.com/what-is-utc" },
+        { title: "The International Date Line", description: "Journey to the middle of the Pacific to understand the imaginary line where a new day is born.", image: "https://static.wixstatic.com/media/31d31f_a7a0cf78f82b4693a4af4003457256f6~mv2.png", link: "https://www.myglobaltime.com/international-date-line" },
+        { title: "Why India Has a Single Time Zone", description: "A look into the history and consequences of India's single time zone and the calls for change.", image: "https://static.wixstatic.com/media/31d31f_030e268abdb4428a8ee4f2f62363c90a~mv2.png", link: "https://www.myglobaltime.com/india-single-time-zone" }
+    ];
+
+    function populateBlogSection() {
+        const blogSliderWrapper = document.getElementById('blog-slider-wrapper');
+        if (!blogSliderWrapper) return;
+        
+        blogPosts.forEach(post => {
+            const slide = document.createElement('div');
+            slide.className = 'scroll-snap-align-start';
+            slide.innerHTML = ` <a href="${post.link}" target="_top" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-indigo-500/30 transition-shadow duration-300 h-full flex flex-col"> <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover"> <div class="p-4 flex-grow"> <h3 class="font-headline text-lg font-bold mb-2">${post.title}</h3> <p class="text-gray-400 text-sm">${post.description}</p> </div> </a> `;
+            blogSliderWrapper.appendChild(slide);
+        });
+    }
+
+    function setupBlogScrolling() {
+        const container = document.getElementById('blog-slider-wrapper');
+        const leftBtn = document.getElementById('scroll-left-btn');
+        const rightBtn = document.getElementById('scroll-right-btn');
+        if (!container || !leftBtn || !rightBtn) return;
+        const updateArrowStates = () => {
+            leftBtn.disabled = container.scrollLeft <= 0;
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+            rightBtn.disabled = container.scrollLeft >= maxScrollLeft - 1;
+        };
+        rightBtn.addEventListener('click', () => {
+            container.scrollBy({ left: container.clientWidth * 0.9, behavior: 'smooth' });
+        });
+        leftBtn.addEventListener('click', () => {
+            container.scrollBy({ left: -container.clientWidth * 0.9, behavior: 'smooth' });
+        });
+        container.addEventListener('scroll', updateArrowStates);
+        new ResizeObserver(updateArrowStates).observe(container);
+        updateArrowStates();
+    }
+    
+    // --- INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', () => {
+        populateBlogSection();
+        setupBlogScrolling();
+    });
+</script>
+<script src="main.js" defer></script>
 </body>
 </html>

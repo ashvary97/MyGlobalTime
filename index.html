@@ -43,11 +43,27 @@
             background-color: #4a5568; /* gray-600 */
             border-radius: 4px;
         }
+        /* Custom scrollbar styles for the blog section */
+        .blog-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .blog-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .blog-container::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 4px;
+        }
+        /* Style for disabled scroll arrows */
+        .scroll-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white antialiased">
 
-    <header id="main-header"></header>
+    <header-section id="main-header"></header-section>
 
     <div class="container mx-auto px-4 py-8 md:py-16">
         <header class="text-center mb-12">
@@ -87,7 +103,7 @@
                 </div>
             </section>
             
-            <section class="py-16 bg-gray-800/20 rounded-lg">
+            <section class="py-16 bg-gray-800/20 rounded-lg overflow-hidden">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-3xl font-bold text-center mb-12">From Our Blog</h2>
                     <div id="blog-slider-container" class="relative">
@@ -284,12 +300,12 @@
         function populateBlogSection() {
             if (!blogSliderContainer) return;
             blogSliderContainer.innerHTML = `
-                <button id="scroll-left-btn" class="scroll-btn absolute top-1/2 left-0 md:-left-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity disabled:opacity-20 disabled:cursor-not-allowed">
+                <button id="scroll-left-btn" class="scroll-btn absolute top-1/2 left-4 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity disabled:opacity-20 disabled:cursor-not-allowed">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
-                <div id="blog-slider-wrapper" class="blog-container grid grid-flow-col auto-cols-[90%] sm:auto-cols-[45%] lg:auto-cols-[31%] gap-6 overflow-x-auto pb-4" style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;">
+                <div id="blog-slider-wrapper" class="blog-container grid grid-flow-col auto-cols-[90%] sm:auto-cols-[45%] lg:auto-cols-[31%] gap-6 overflow-x-auto pb-4 px-16" style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;">
                 </div>
-                <button id="scroll-right-btn" class="scroll-btn absolute top-1/2 right-0 md:-right-14 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity disabled:opacity-20 disabled:cursor-not-allowed">
+                <button id="scroll-right-btn" class="scroll-btn absolute top-1/2 right-4 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity disabled:opacity-20 disabled:cursor-not-allowed">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
             `;

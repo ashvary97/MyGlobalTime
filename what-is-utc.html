@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYFLKB3JF4"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYFLKB3JF4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -27,59 +27,143 @@
         h1, h2, h3, .font-headline {
             font-family: 'Playfair Display', serif;
         }
-        
+        /* Custom scrollbar styles for the blog section */
+        .blog-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .blog-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .blog-container::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 4px;
+        }
+        /* Style for disabled scroll arrows */
+        .scroll-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white antialiased">
 
     <header id="main-header"></header>
 
-    <main class="container mx-auto px-4 py-8 md:py-16">
-        <article class="max-w-4xl mx-auto">
-            <header class="text-center mb-12">
-                <h1 class="text-4xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
-                    What is UTC? A Simple Guide to the World's Time Standard
-                </h1>
-                <p class="mt-4 text-lg text-gray-400">Published on August 16, 2025</p>
-            </header>
+    <div class="container mx-auto px-4 py-8 md:py-16">
+        <main>
+            <article class="max-w-4xl mx-auto">
+                <header class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+                        What is UTC? A Simple Guide to the World's Time Standard
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-400">Published on August 16, 2025</p>
+                </header>
 
-            <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
-                <p>You've probably seen it before—letters tacked onto the end of a time, like "14:00 UTC." It pops up in event invitations, flight details, and tech forums. But what exactly is UTC, and why is it so important for a globally connected world?</p>
-                <p>Don't worry, it's not as complicated as it sounds. Let's break down the world's time standard into simple terms.</p>
-                
-                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The "World Clock" That Never Changes</h2>
-                <p>Think of <strong>UTC (Coordinated Universal Time)</strong> as the official, master clock for the entire planet. It's a time standard, not a time zone. This is a crucial difference. While time zones change with the seasons (hello, Daylight Saving Time!), UTC never does. It is the constant, unchanging benchmark against which all our local time zones are measured.</p>
-                <p>It’s based on a network of hundreds of hyper-accurate atomic clocks around the world, making it the most precise time standard we have.</p>
+                <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
+                    <p>You've probably seen it before—letters tacked onto the end of a time, like "14:00 UTC." It pops up in event invitations, flight details, and tech forums. But what exactly is UTC, and why is it so important for a globally connected world?</p>
+                    <p>Don't worry, it's not as complicated as it sounds. Let's break down the world's time standard into simple terms.</p>
+                    
+                    <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The "World Clock" That Never Changes</h2>
+                    <p>Think of <strong>UTC (Coordinated Universal Time)</strong> as the official, master clock for the entire planet. It's a time standard, not a time zone. This is a crucial difference. While time zones change with the seasons (hello, Daylight Saving Time!), UTC never does. It is the constant, unchanging benchmark against which all our local time zones are measured.</p>
+                    <p>It’s based on a network of hundreds of hyper-accurate atomic clocks around the world, making it the most precise time standard we have.</p>
 
-                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">Why Do We Need a Master Clock?</h2>
-                <p>Imagine trying to schedule an international video call. If you say "Let's meet at 10:00 AM," chaos would ensue. 10:00 AM where? In New York? London? Tokyo? Each of those is a completely different moment in time.</p>
-                <p>This is where UTC saves the day. By scheduling the call for "14:00 UTC," everyone, no matter where they are, has a single, unambiguous point of reference. They can then calculate what "14:00 UTC" means in their local time zone.</p>
-                <p>UTC is the universal language of time, essential for:</p>
-                <ul class="list-disc list-inside space-y-4">
-                    <li><strong>Aviation:</strong> Pilots and air traffic controllers rely on UTC to coordinate flights safely across the globe.</li>
-                    <li><strong>The Internet:</strong> Your computer's clock syncs with servers using UTC to ensure everything from emails to financial transactions is timestamped correctly.</li>
-                    <li><strong>International Business:</strong> Global teams use it to schedule meetings and deadlines without confusion.</li>
-                    <li><strong>Scientists:</strong> Researchers use it to time experiments and astronomical events with precision.</li>
-                </ul>
-
-                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">How UTC and Time Zones Work Together</h2>
-                <p>Your local time is simply UTC plus or minus a certain number of hours. This difference is called an "offset."</p>
-                
-                <div class="bg-gray-800/50 border-l-4 border-indigo-400 p-6 rounded-r-lg my-6">
-                    <p class="font-bold text-white mb-4">For example:</p>
-                    <ul class="space-y-3">
-                        <li><strong>India Standard Time (IST) is UTC+5:30.</strong> This means it is 5 hours and 30 minutes ahead of UTC. So, if it's 10:00 UTC, the time in India is 15:30 (3:30 PM).</li>
-                        <li><strong>Eastern Standard Time (EST) in North America is UTC-5:00.</strong> This means it is 5 hours behind UTC. So, if it's 10:00 UTC, the time in New York is 05:00 (5:00 AM).</li>
+                    <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">Why Do We Need a Master Clock?</h2>
+                    <p>Imagine trying to schedule an international video call. If you say "Let's meet at 10:00 AM," chaos would ensue. 10:00 AM where? In New York? London? Tokyo? Each of those is a completely different moment in time.</p>
+                    <p>This is where UTC saves the day. By scheduling the call for "14:00 UTC," everyone, no matter where they are, has a single, unambiguous point of reference. They can then calculate what "14:00 UTC" means in their local time zone.</p>
+                    <p>UTC is the universal language of time, essential for:</p>
+                    <ul class="list-disc list-inside space-y-4">
+                        <li><strong>Aviation:</strong> Pilots and air traffic controllers rely on UTC to coordinate flights safely across the globe.</li>
+                        <li><strong>The Internet:</strong> Your computer's clock syncs with servers using UTC to ensure everything from emails to financial transactions is timestamped correctly.</li>
+                        <li><strong>International Business:</strong> Global teams use it to schedule meetings and deadlines without confusion.</li>
+                        <li><strong>Scientists:</strong> Researchers use it to time experiments and astronomical events with precision.</li>
                     </ul>
-                </div>
-                
-                <p>Think of UTC as the zero point on a giant time ruler. Some locations are a few notches ahead, and some are a few notches behind, but they all measure from the same starting point.</p>
 
-                <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The Bottom Line</h2>
-                <p>You might not use it every day, but UTC is the silent, invisible force that keeps our global schedules in sync. It’s the ultimate reference point in a world that never stops moving, ensuring that no matter where we are, we all have a shared understanding of the most fundamental thing of all: when.</p>
+                    <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">How UTC and Time Zones Work Together</h2>
+                    <p>Your local time is simply UTC plus or minus a certain number of hours. This difference is called an "offset."</p>
+                    
+                    <div class="bg-gray-800/50 border-l-4 border-indigo-400 p-6 rounded-r-lg my-6">
+                        <p class="font-bold text-white mb-4">For example:</p>
+                        <ul class="space-y-3">
+                            <li><strong>India Standard Time (IST) is UTC+5:30.</strong> This means it is 5 hours and 30 minutes ahead of UTC. So, if it's 10:00 UTC, the time in India is 15:30 (3:30 PM).</li>
+                            <li><strong>Eastern Standard Time (EST) in North America is UTC-5:00.</strong> This means it is 5 hours behind UTC. So, if it's 10:00 UTC, the time in New York is 05:00 (5:00 AM).</li>
+                        </ul>
+                    </div>
+                    
+                    <p>Think of UTC as the zero point on a giant time ruler. Some locations are a few notches ahead, and some are a few notches behind, but they all measure from the same starting point.</p>
+
+                    <h2 class="font-headline text-3xl font-bold mt-12 mb-4 text-indigo-300">The Bottom Line</h2>
+                    <p>You might not use it every day, but UTC is the silent, invisible force that keeps our global schedules in sync. It’s the ultimate reference point in a world that never stops moving, ensuring that no matter where we are, we all have a shared understanding of the most fundamental thing of all: when.</p>
+                </div>
+            </article>
+        </main>
+
+        <section class="py-16 mt-16 bg-gray-800/20 rounded-lg overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">From Our Blog</h2>
+                
+                <div class="relative">
+                    <button id="scroll-left-btn" class="scroll-btn absolute top-1/2 left-4 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    
+                    <div id="blog-slider-wrapper" class="blog-container grid grid-flow-col auto-cols-[90%] sm:auto-cols-[45%] lg:auto-cols-[31%] gap-6 overflow-x-auto pb-4 px-16" style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none;">
+                        </div>
+
+                    <button id="scroll-right-btn" class="scroll-btn absolute top-1/2 right-4 transform -translate-y-1/2 z-10 bg-gray-800/60 hover:bg-gray-700/80 rounded-full p-2 transition-opacity">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
             </div>
-        </article>
-    </main>
-<script src="main.js"></script>
+        </section>
+    </div>
+<script>
+    // --- BLOG DATA & FUNCTIONS ---
+    const blogPosts = [
+        { title: "Daylight Saving Time Explained", description: "Explore the surprising history and heated debates behind the twice-yearly ritual of changing our clocks.", image: "https://static.wixstatic.com/media/31d31f_ec75f5b0dbfa408bb86f301a96cac4dc~mv2.png", link: "https://www.myglobaltime.com/daylight-saving-time-explained" },
+        { title: "What is UTC? A Simple Guide", description: "Demystify the master clock that keeps the entire planet in sync, from aviation to the internet.", image: "https://static.wixstatic.com/media/31d31f_7c17d25ef1914f058b2bc407cb525b46~mv2.png", link: "https://www.myglobaltime.com/what-is-utc" },
+        { title: "The International Date Line", description: "Journey to the middle of the Pacific to understand the imaginary line where a new day is born.", image: "https://static.wixstatic.com/media/31d31f_a7a0cf78f82b4693a4af4003457256f6~mv2.png", link: "https://www.myglobaltime.com/international-date-line" },
+        { title: "Why India Has a Single Time Zone", description: "A look into the history and consequences of India's single time zone and the calls for change.", image: "https://static.wixstatic.com/media/31d31f_030e268abdb4428a8ee4f2f62363c90a~mv2.png", link: "https://www.myglobaltime.com/india-single-time-zone" }
+    ];
+
+    function populateBlogSection() {
+        const blogSliderWrapper = document.getElementById('blog-slider-wrapper');
+        if (!blogSliderWrapper) return;
+        
+        blogPosts.forEach(post => {
+            const slide = document.createElement('div');
+            slide.className = 'scroll-snap-align-start';
+            slide.innerHTML = ` <a href="${post.link}" target="_top" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-indigo-500/30 transition-shadow duration-300 h-full flex flex-col"> <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover"> <div class="p-4 flex-grow"> <h3 class="font-headline text-lg font-bold mb-2">${post.title}</h3> <p class="text-gray-400 text-sm">${post.description}</p> </div> </a> `;
+            blogSliderWrapper.appendChild(slide);
+        });
+    }
+
+    function setupBlogScrolling() {
+        const container = document.getElementById('blog-slider-wrapper');
+        const leftBtn = document.getElementById('scroll-left-btn');
+        const rightBtn = document.getElementById('scroll-right-btn');
+        if (!container || !leftBtn || !rightBtn) return;
+        const updateArrowStates = () => {
+            leftBtn.disabled = container.scrollLeft <= 0;
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+            rightBtn.disabled = container.scrollLeft >= maxScrollLeft - 1;
+        };
+        rightBtn.addEventListener('click', () => {
+            container.scrollBy({ left: container.clientWidth * 0.9, behavior: 'smooth' });
+        });
+        leftBtn.addEventListener('click', () => {
+            container.scrollBy({ left: -container.clientWidth * 0.9, behavior: 'smooth' });
+        });
+        container.addEventListener('scroll', updateArrowStates);
+        new ResizeObserver(updateArrowStates).observe(container);
+        updateArrowStates();
+    }
+    
+    // --- INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', () => {
+        populateBlogSection();
+        setupBlogScrolling();
+    });
+</script>
+<script src="main.js" defer></script>
 </body>
 </html>

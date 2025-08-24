@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const headerPlaceholder = document.getElementById('main-header');
     
     if (headerPlaceholder) {
-        fetch('header.html')
+        fetch('header-section.html')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
