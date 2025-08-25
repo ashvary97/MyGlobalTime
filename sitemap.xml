@@ -81,6 +81,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.myglobaltime.com/secrets-of-the-reefs</loc>
+    <lastmod>2025-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.myglobaltime.com/blogs/daylight-saving-time-explained</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>yearly</changefreq>
