@@ -81,7 +81,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.myglobaltime.com/secrets-of-the-reefs</loc>
+    <loc>https://www.myglobaltime.com/blogs/red-heart-to-turquoise-sea</loc>
+    <lastmod>2025-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.myglobaltime.com/blogs/cuddles-and-chaos-down-under</loc>
+    <lastmod>2025-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.myglobaltime.com/blogs/secrets-of-the-reefs</loc>
     <lastmod>2025-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -100,12 +112,6 @@
   </url>
   <url>
     <loc>https://www.myglobaltime.com/blogs/international-date-line</loc>
-    <lastmod>2025-08-18</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.myglobaltime.com/blogs/why-india-has-one-time-zone</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
