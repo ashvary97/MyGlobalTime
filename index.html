@@ -101,7 +101,36 @@
                         <p id="error-message" class="text-red-400 mt-2 h-5 text-center"></p>
                     </div>
                 </div>
+
+                <div id="ai-scheduler-section" class="mt-20">
+    <h2 class="text-2xl font-bold text-center mb-6 flex items-center justify-center">
+        <span class="mr-2">🕒</span> Smart Meeting Finder 
+        <span class="text-xs font-bold bg-indigo-600 text-white px-2 py-1 rounded-full ml-3 tracking-widest uppercase">AI</span>
+    </h2>
+    
+    <div class="max-w-2xl mx-auto bg-gray-800 border border-gray-700 rounded-xl p-6 sm:p-8 shadow-lg">
+        <textarea 
+            id="ai-input" 
+            placeholder="e.g., 'Find a 1-hour slot tomorrow for New York, London, and Tokyo between 9am-5pm their time'" 
+            class="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-y min-h-[100px] mb-6"
+        ></textarea>
+        
+        <div class="text-center">
+            <button 
+                id="analyze-btn" 
+                onclick="findMeetingTime()" 
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300 shadow-md shadow-indigo-500/20"
+            >
+                Find Best Time
+            </button>
+        </div>
+        
+        <div id="ai-result" class="mt-6 text-center text-lg font-medium text-green-400 empty:hidden"></div>
+    </div>
+</div>
             </section>
+
+        
             
             <section class="py-16 bg-gray-800/20 rounded-lg overflow-hidden">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
