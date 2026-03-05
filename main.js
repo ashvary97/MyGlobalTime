@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 async function findMeetingTime() {
     const userInput = document.getElementById('ai-input').value;
     const resultDiv = document.getElementById('ai-result');
-    const apiKey = "AIzaSyBDDpC8TXzKZK-mtgkzeCHkRCAgeVAayJU"; // IMPORTANT: Replace with your actual key
+    const apiKey = "AIzaSyDb5Lhs7SfPyEf_n8AB6xhh0TXmv8oi88s"; // IMPORTANT: Replace with your actual key
 
     if (!userInput.trim()) {
         resultDiv.innerHTML = "Please enter the cities and your constraints first.";
@@ -122,7 +122,7 @@ async function askTimeAssistant() {
     const inputField = document.getElementById('assistant-input');
     const userQuery = inputField.value.trim();
     const resultArea = document.getElementById('assistant-response');
-    const apiKey = "AIzaSyBDDpC8TXzKZK-mtgkzeCHkRCAgeVAayJU"; // Replace with your key if needed
+    const apiKey = "AIzaSyDb5Lhs7SfPyEf_n8AB6xhh0TXmv8oi88s"; // Replace with your key if needed
 
     if (!userQuery) return;
 
